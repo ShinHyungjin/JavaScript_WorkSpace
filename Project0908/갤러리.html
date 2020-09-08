@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #main {
+            width: 500px;
+            height: 450px;
+            border: 2px solid black;
+            background: lightblue;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        #images {
+            width: 100%;
+            height: 90%;
+            border: 2px solid blue;
+            box-sizing: border-box;
+        }
+
+        #buttondiv {
+            width: 100%;
+            height: 10%;
+            border: 2px solid red;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 4px 0px 4px 0px;
+        }
+
+        #right {
+            width: 60px;
+            height: 100%;
+            float: right;
+            font-size: 16pt;
+        }
+
+        #left {
+            width: 60px;
+            height: 100%;
+            float: left;
+            font-size: 16pt;
+        }
+
+        #pic {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <!-- 낙타등 표기법 : camel 기법
+            단어와 단어가 만나면 뒷 철자를 대문자로 표기 -->
+    <script>
+        var x = 1;
+        function next() {
+            x = x + 1;
+            document.getElementById("pic").src = "../travel/" + x + ".jpg";
+        }
+        function before() {
+            x = x - 1;
+            document.getElementById("pic").src = "../travel/" + x + ".jpg";
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="images">
+            <img src="../travel/1.jpg" id="pic" />
+        </div>
+        <div id="buttondiv">
+            <button id="left" onClick="before()">◀</button>
+            <button id="right" onClick="next()">▶</button>
+        </div>
+    </div>
+</body>
+
+</html>

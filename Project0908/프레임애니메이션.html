@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var x = 1;
+        function next() {
+            if (x == 18)
+                x = 1;
+            else
+                x = x + 1;
+            document.getElementById("pic").src = "../hero/image" + x + ".png";
+        }
+    </script>
+</head>
+
+<body>
+    <img src="../hero/image1.png" id="pic" />
+    <div>
+        <button id="right" onClick="next()">움직이기</button>
+    </div>
+</body>
+
+</html>

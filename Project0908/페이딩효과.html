@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        x = 1.0;
+        function transparent() {
+            x = x - 0.1;
+            document.getElementById("pic").style.opacity = x;
+        }
+        function up() {
+            x = x + 0.1;
+            document.getElementById("pic").style.opacity = x;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <img src="../images/3.jpg" id="pic" />
+    <button onClick="transparent()">점점 투명하게</button>
+    <button onClick="up()">점점 선명하게</button>
+
+</body>
+
+</html>
