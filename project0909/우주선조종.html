@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url(https://s3.envato.com/files/238993240/Halloween%20Game%20BG%2002/Halloween%20Game%20BG%2002%20-%2001.png);
+            background-repeat: repeat-x;
+            background-position:-170px 0px;
+        }
+        #top {
+        }
+        #plane {
+            width:150px;
+            height:150px;
+            position:absolute;
+            left:270px;
+            top:80px;
+        }
+    </style>
+
+    <script>
+        x = 270;
+        y = 80;
+        bgx = -170;
+        function moveRight() {
+            x = x+20;
+            document.getElementById("plane").style.left = x +"px";
+        }
+        function moveLeft() {
+            x = x-20;
+            document.getElementById("plane").style.left = x +"px";
+        }
+        function moveTop() {
+            y = y-20;
+            document.getElementById("plane").style.top = y +"px";
+        }
+        function moveBottom() {
+            y = y+20;
+            document.getElementById("plane").style.top = y +"px";
+        }
+        function moveBg() {
+            bgx = bgx-10;
+            document.body.style.backgroundPosition=bgx + "px 0px";
+        }
+        function Auto() {
+            setInterval("moveBg()", 2);
+            // setInterval("함수명", 시간) : 시간은 1000분의 x초
+        }
+    </script>
+
+</head>
+<body>
+    <div>
+        <button id="top" onClick="moveTop()">▲</button>
+    </div>
+    <div>
+        <button id="left" onClick="moveLeft()">◀</button>
+        <button id="right" onClick="moveRight()">▶</button>
+    </div>
+    <div>
+        <button id="bottom" onClick="moveBottom()">▼</button>
+    </div>
+    <div>
+        <button id="bg" onClick="moveBg()">수동이동</button>
+    </div>
+    <div>
+        <button id="bg" onClick="Auto()">자동이동</button>
+    </div>
+    <img src="plane.png" id="plane"/>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            border:2px solid black;
+            box-sizing: border-box;
+            width:804px;
+            height:600px;
+            margin:auto;
+            overflow: hidden;
+        }
+        #left {
+            width:200px;
+            height:600px;
+            background:yellow;
+            display: inline-block;
+            float:left;
+        }
+        #right {
+            width:600px;
+            height:600px;
+            background:red;
+            display: inline-block;
+            float:left;
+        }
+        #pic {
+            width:100px;
+            height:100px;
+            transform:rotate(0deg);
+        }
+
+    </style>
+
+    <script>
+        var w=100;
+        var h=100;
+        var sx=1;
+        var sy=1;
+        var so=1;
+        var sr=0;
+        var sp= ["static", "absolute","fixed","relative","sticky","initial","inherit"];
+        var sp_c = 0;
+        var sb=1;
+        function setWidth() {
+            w = w+10;
+            if (w >= 200)
+                w=100;
+            document.getElementById("pic").style.width = w+"px";
+        }
+        function setHeight() {
+            h = h+10;
+            if (h >= 200)
+                h=100;
+            document.getElementById("pic").style.height = h+"px";
+        }
+        function setScaleX() {
+            sx = sx + 0.5;
+            if (sx >= 3.0)
+                sx=1;
+            document.getElementById("pic").style.transform = "scaleX("+sx+")";
+        }
+        function setScaleY() {
+            sy = sy + 0.5;
+            if (sy >= 3.0)
+                sy=1;
+            document.getElementById("pic").style.transform = "scaleY("+sy+")";
+        }
+        function setOpacity() {   
+            so = so - 0.1;
+            if (so <= 0.0)
+                so = 1;
+            document.getElementById("pic").style.opacity = so;
+        }
+        function setRotate() {   
+            sr = sr+35;
+            document.getElementById("pic").style.transform = "rotate("+sr+"deg)";
+        }
+        function setPosition() {   
+            if(sp_c == 7)
+                sp_c = 0;
+            sp_c = sp_c + 1;
+            document.getElementById("pic").style.position = sp[sp_c];
+        }
+        function setBorder() {
+            if(sb == 5)
+                sb = 0;
+            sb = sb + 1;
+            document.getElementById("pic").style.border = sb+"px solid black";
+        }
+
+    </script>
+
+</head>
+<body>
+<div id="main">
+    <div id="left">
+        <li><button onClick="setWidth()">width</button>
+              <button onclick="setHeight()">height</button>
+        </li>
+        <li><button onClick="setScaleX()">scaleX</button>
+              <button onClick="setScaleY()">scaleY</button>
+        </li>
+        <li><button onClick="setOpacity()">opacity</button>
+        </li>
+        <li><button onClick="setRotate()">rotate</button>
+        </li>
+        <li><button onClick="setPosition()">position</button>
+        </li>
+        <li><button onClick="setBorder()">border</button>
+        </li>
+    </div>
+    <div id="right"> <img src ="../hero/image15.png" id="pic"/></div>
+</div>
+</body>
+</html>
