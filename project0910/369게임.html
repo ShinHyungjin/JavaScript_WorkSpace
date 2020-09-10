@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 300px;
+            background-color: yellow;
+            font-size: 170px;
+            text-align: center;
+            /*div안쪽 컨텐츠의 정렬*/
+        }
+    </style>
+
+    <script>
+        var n=0;
+        var msg = "";
+        function setCount() {
+            n++;
+            mgr = (n%3)==0? "짝":n;
+            document.getElementById("box").innerText=mgr;
+
+            // if ((n%3)==0) {
+            //     document.getElementById("box").innerText="짝";    
+            // }
+            // else {
+            //     document.getElementById("box").innerText=n;
+            // }
+            
+        }
+    </script>
+
+</head>
+
+<body>
+    <button onClick="setCount()">카운터 증가</button>
+    <div id="box">0</div>
+</body>
+
+</html>

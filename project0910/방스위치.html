@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #swpn {
+           width:100px;
+           height:600px; 
+           float:left;
+        }
+        #ropn {
+           width:700px;
+           height:600px; 
+           float:left;
+        }
+        #main {
+            width:804px;
+            height:600px;
+            border:2px solid black;
+            margin:auto;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        #left {
+            width:100px;
+            height:600px;
+            background:gray;
+            display:inline-block;
+            float:left;
+        }
+        #right {
+            width:700px;
+            height:600px;
+            opacity:0.8;
+            display:inline-block;
+            float:left;
+        }
+    </style>
+
+    <script>
+        var x=true;
+        function setOnLight() {
+            if (x==true) {
+                document.getElementById("ropn").style.opacity = 0.3;
+                document.getElementById("swpn").style.transform = "rotate("+180+"deg)";
+            }
+            else {
+                document.getElementById("ropn").style.opacity = 1.0;
+                document.getElementById("swpn").style.transform = "rotate("+360+"deg)";
+            }
+            x = !x;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="leftswitch">
+            <img src="switch.png" onClick="setOnLight()" id="swpn"/>
+        </div>
+        <div id="right">
+            <img src="room.png" id="ropn"/>
+        </div>
+    </div>
+</body>
+
+</html>

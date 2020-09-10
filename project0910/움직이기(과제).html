@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width:100px;
+            height:100px;
+            background:red;
+            position:absolute;
+            left:0px;
+            top:200px;
+        }
+    </style>
+
+    <script>
+        var x=0;
+        var oldx=0;
+        var y=20;
+        var flag=true;
+        function move() {
+            oldx = x==0? 0:oldx;
+            flag = oldx<=x && x<400? true:false;
+            y = flag == true? 20:-20;
+            oldx = x;
+            x = x +y;
+            document.getElementById("box").style.left=x+"px";
+            document.getElementById("info").value=x+"px";
+        }
+    </script>
+</head>
+<body>
+    <button onClick="move()">움직이기</button>
+    <input type="text" id="info"/>
+    <div id="box"></div>
+</body>
+</html>

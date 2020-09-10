@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+            body {
+                background:black;
+            }
+            button {
+                background:yellow;
+            }
+    </style>
+    
+    <script>
+        var x = false;
+        var col;
+        function setOnLight() {
+            col = (x==false)? "white":"black";
+            x = !x;
+            document.body.style.background=col;
+        }
+    </script>
+
+</head>
+<body>
+
+    <button onClick="setOnLight()">스위치</button>
+    
+</body>
+</html>

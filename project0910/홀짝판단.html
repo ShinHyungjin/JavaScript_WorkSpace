@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+    <script>
+        function openPrompt() {
+            var number = prompt("원하시는 숫자를 넣어주세요");
+            if ((number % 2) == 0) {
+                document.getElementById("result").style.background="yellow";
+                document.getElementById("result").value = "짝수입니다";
+            }
+            else {
+                document.getElementById("result").style.background="orange";
+                document.getElementById("result").value = "홀수입니다";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <button onClick="openPrompt()">프롬프트 띄우기</button>
+    <input id="result" type="text" value="결과..."/>
+</body>
+</html>
