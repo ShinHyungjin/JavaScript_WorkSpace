@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    body {
+        margin:auto;
+    }
+    #main {
+        width:800px;
+        height:700px;
+        background:gray;
+        position: relative;
+    }
+    #box{
+        width:100px;
+        height:100px;
+        background-color: red;
+        position:absolute;
+        left:0px;
+        top:0px;
+        color:yellow;
+        font-size:40px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+<script>
+var x=0;//box의 x좌표 
+var y=0;   
+var stepx=25; //우측,좌측을 결정짓는 발걸음 변수
+var stepy=15;
+var flagx=true;
+var flagy=true;
+var box; //수행 오류!!
+
+//init은 내가 만든 함수명이다..
+//body 태그안의 모든 요소가 생성된 이후에, 즉 로드된 이후에 자바스크립트에서 
+//접근해야 하므로, 초기화 함수는 onLoad 이벤트 핸들러에서 호출하도록 한다!!
+function init(){
+    //문서 로드이후에 사용할 수 있는 것들에 대해 주로 한다!!
+    box =   document.getElementById("box");
+}
+//함수는 호출해야 동작한다!!(호출하기 전까지는 절대로 실행하지 않는다)
+function move(){
+    x = x + stepx; //우측방향일때는 양수5, 좌측방향일때는 음수5
+    y = y + stepy;
+    document.getElementById("box").style.left=x+"px";
+    document.getElementById("box").style.top=y+"px";
+    //박스안에 x값 출력 
+    //document.getElementById("box").innerText=x+y;
+
+    //400이상이거나, 0이하면 기존의 5는 부호를 바꿔야 한다
+    //방법1)
+    flagx=(x<=0 ||  x>=700)? !flagx:flagx;  
+    stepx = (flagx)? 25 : -25;
+    flagy=(y<=0 || y>=600)? !flagy:flagy;
+    stepy = (flagy)? 15 : -15;
+    
+    //방법2)
+    //stepx=(x<=0 ||  x>=400)? -stepx:stepx;  
+}
+function moveauto() {
+    setInterval("move()",40);
+}
+function setColorChange() {
+    
+}
+</script>
+</head>
+<body onLoad="init()">
+    <button onClick="move()">움직이기(수동)</button>        
+    <button onClick="moveauto()">움직이기(자동)</button>
+    <div id="main">      
+        <div id="box"></div>
+    </div>    
+</body>
+</html>
