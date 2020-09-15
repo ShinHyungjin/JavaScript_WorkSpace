@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function init() {
+            var sel = document.getElementById("sel");
+            for (var i = 2020; i > 1929; i--) {
+                var op = document.createElement("option");
+                op.text = i + "년";
+                sel.add(op);
+            }
+        }
+    </script>
+</head>
+
+<body onLoad="init()">
+    <select id="sel">
+    </select>
+</body>
+
+</html>

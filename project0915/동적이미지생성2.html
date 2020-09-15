@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var a=1;
+        var count;
+        var ball_img;
+        function createImage() {
+           var img = document.createElement("img");
+           count = parseInt(document.getElementById("count").value);
+           ball_img = document.getElementById("ball_img").value;
+            if (a%count==0) {
+                img.src = ball_img;
+            } else
+                img.src = "../images/ball1.jpg";
+            a = a+1;
+            img.style.width=120+"px";
+            document.body.appendChild(img);
+        }   
+        function auto() {
+            setInterval("createAuto()", 20);
+        }
+        function createAuto() {
+            var img = document.createElement("img");
+           count = parseInt(document.getElementById("count").value);
+           ball_img = document.getElementById("ball_img").value;
+            if (a%count==0) {
+                img.src = ball_img;
+            } else
+                img.src = "../images/ball1.jpg";
+            a = a+1;
+            img.style.width=120+"px";
+            document.body.appendChild(img);
+        }
+    </script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <button onClick="createImage()">이미지 동적 생성</button>    
+    <button onClick="auto()">이미지 자동 생성</button>  
+    <input type="text" placeholder="몇번째마다 공을 생성할지" id="count"/>
+    <input type="text" placeholder="이미지경로" id="ball_img"/>
+    <br>
+</body>
+</html>

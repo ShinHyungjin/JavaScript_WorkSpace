@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function createImage() {
+           var img = document.createElement("img");
+            img.src = "../hero/image1.png";
+            img.style.border = "2px solid red";
+            img.style.width=100+"px";
+            document.body.appendChild(img);
+        }   
+    
+    </script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <button onClick="createImage()">이미지 동적 생성</button>
+    <img src="../hero/image1.png"/>    
+</body>
+</html>

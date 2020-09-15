@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 700px;
+            height: 600px;
+            background: yellow;
+            margin: auto;
+        }
+    </style>
+    <script>
+        var di; 
+        var img;
+        function create() {
+            var count = parseInt(document.querySelector("input[type='text']").value);
+            for (var i=0; i < count; i++) {
+                di = document.querySelector("div");
+                img = document.createElement("img");
+                img.src = "../hero/image1.png";
+                di.appendChild(img);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onClick="create()">동적생성</button>
+    <input type="text" placeholder="생성할 갯수입력"/>
+    <div></div>
+</body>
+
+</html>
