@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 700px;
+            height: 600px;
+            margin: auto;
+            margin: auto;
+            border: 2px solid black;
+        }
+
+        .thumb {
+            width: 150px;
+            height: 100%;
+            float: left;
+            overflow: scroll;
+        }
+
+        .detail {
+            width: 550px;
+            height: 100%;
+            float: left;
+        }
+
+        .thumb img {
+            width: 120px;
+        }
+
+        .detail img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        var detailImage;
+        var detailDiv;
+        window.addEventListener("load", function() {
+            createTunmb();
+            createDetail();
+        });
+
+        function createTunmb() {
+            var thumbDiv = document.querySelector(".thumb");
+            for(var i =1; i<=10; i++) {
+                var thumbImage = document.createElement("img");
+                thumbImage.src = "../images/"+i+".jpg";
+                thumbDiv.appendChild(thumbImage);
+             
+                thumbImage.addEventListener("click", function() {
+                   detailImage.src = this.src;
+                });
+                    
+            }
+        }
+        function createDetail() {
+            detailImage = document.createElement("img");
+            detailImage.src = "../images/1.jpg";
+            detailDiv = document.querySelector(".detail");
+            detailDiv.appendChild(detailImage);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="thumb"></div>
+        <div class="detail"></div>
+    </div>
+</body>
+
+</html>

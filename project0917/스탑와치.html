@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 70%;
+            height: 220px;
+            border: 10px solid red;
+            margin: auto;
+            font-size: 30px;
+        }
+
+        input[type='text'] {
+            width: 23%;
+            height: 150px;
+            font-size: 80px;
+            text-align: right;
+        }
+
+        button {
+            width: 20%;
+            height: 40px;
+            background: lightgreen;
+            border: 0px;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        var hour, min, sec;
+        var start_interval;
+        var pause_interval;
+        var reset_interval;
+        var pause_col = ["lightgreen", "red"];
+        var flag = true;
+        window.addEventListener("load", function () {
+            init();
+        });
+
+        function init() {
+            hour = document.getElementById("hour");
+            min = document.getElementById("min");
+            sec = document.getElementById("sec");
+            hour.value = 0;
+            min.value = 0;
+            sec.value = 0;
+
+            var start = document.getElementById("start");
+            var pause = document.getElementById("pause");
+            var reset = document.getElementById("reset");
+
+            start.addEventListener("click", function () {
+                start_interval = setInterval("timer()", 1000);
+                flag = true;
+            });
+            pause.addEventListener("click", function () {
+                flag = !flag;
+                if(flag == true)
+                    pause.style.background=pause_col[0];
+                else
+                    pause.style.background=pause_col[1];
+                //clearTimeout(start_interval, 1000); 1초후 중지하라..
+            });
+            reset.addEventListener("click", function () {
+                clearInterval(start_interval);
+                reset_f();
+                flag = true;
+            });
+        }
+        function timer() {
+            if (flag) {
+                sec.value = parseInt(parseInt(sec.value) + 1);
+                if (sec.value % 60 == 0 && sec.value != 0) {
+                    sec.value = 0;
+                    min.value = parseInt(parseInt(min.value) + 1);
+                }
+                if (min.value % 60 == 0 && min.value != 0) {
+                    min.value = 0;
+                    hour.value = parseInt(parseInt(hour.value) + 1);
+                }
+            }
+        }
+        function reset_f() {
+            sec.value = 0;
+            min.value = 0;
+            hour.value = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="text" id="hour" />시
+        <input type="text" id="min" />분
+        <input type="text" id="sec" />초
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
+</body>
+
+</html>
