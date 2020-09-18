@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/lib.js"> </script>
+    <script>
+        function execute() {
+            var content = document.getElementById("content");
+            var r = getRandom(2);
+            content.innerHTML = "<img src=\"" + r + ".png\"  />";
+        }
+    </script>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onClick="execute()">실행</button>
+    <br>
+    <div id="content"></div>
+</body>
+
+</html>
