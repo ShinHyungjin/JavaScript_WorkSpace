@@ -43,14 +43,14 @@
         }
 
         function move() {
-            circle.style.left = parseInt(circle.style.left) + a * (targetX - parseInt(circle.style.left)) + "px";
-            circle.style.top = parseInt(circle.style.top) + a * (targetY - parseInt(circle.style.top)) + "px";
+            circle.style.left = Math.ceil(parseFloat(circle.style.left) + a * (targetX - parseFloat(circle.style.left))) + "px";
+            circle.style.top = Math.ceil(parseFloat(circle.style.top) + a * (targetY - parseFloat(circle.style.top))) + "px";
             circle.innerText = "X : " + circle.style.left + "\nY : " + circle.style.top;
         }
 
         function auto() {
-            targetX = parseInt(document.getElementById("x").value);
-            targetY = parseInt(document.getElementById("y").value);
+            targetX = parseFloat(document.getElementById("x").value);
+            targetY = parseFloat(document.getElementById("y").value);
         }
     </script>
 </head>
