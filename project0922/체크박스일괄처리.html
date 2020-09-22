@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+    </style>
+    <script>
+        var flag = true;
+        function checkAll() {
+            var ch = document.getElementsByName("ch");
+            if (flag == true)
+                for (var i = 0; i < ch.length; i++)
+                    ch[i].checked = true;
+            else
+                for (var i = 0; i < ch.length; i++)
+                    ch[i].checked = false;
+            flag = !flag;
+        }
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li><input type="checkbox" onClick="checkAll()" name="ch" />대표 박스</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+        <li><input type="checkbox" name="ch" />메일 제목</li>
+    </ul>
+</body>
+
+</html>

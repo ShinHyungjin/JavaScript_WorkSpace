@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin:0px;
+        }
+        #wrapper {
+            width:800px;
+            height:200px;
+            background:orange;
+            overflow:hidden;
+            margin:auto;
+            position:relative;
+        }
+        #pic {
+            width:1000px;
+            height:200px;
+        }
+    </style>
+    <script>
+        var p;
+        var dv;
+        var wrapper;
+        var id = Array(5);
+        function init() {
+            dv = document.getElementById("dv");
+            wrapper = document.getElementById("wrapper");
+            wrapper.appendChild(dv);
+            for(var i =0; i<=4; i++) {
+                p = document.createElement("img");
+                p.src = "../images/"+(i+1)+".jpg";
+                p.style.width = 200 +"px";
+                p.style.height = 200 + "px";
+                p.style.position = "absolute";
+                p.style.left = i*200+"px";
+                id[i] = p;
+                dv.appendChild(p);
+            }
+        }
+        function move() {
+            for(var i=0; i<=4; i++) {
+                if(parseFloat(id[i].style.left) <= -199.0) {
+                    id[i].style.left = 800 +"px";
+                }
+                id[i].style.left = parseFloat(id[i].style.left) + 0.1 * -200 + "px";
+            }
+        }
+        window.addEventListener("load", function() {
+            init();
+            setInterval("move()", 100);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="dv">
+
+        </div>
+    </div>
+</body>
+</html>
