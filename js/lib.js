@@ -22,5 +22,5 @@ function getNonZeroDate(n) {
     Math.ceil 또는 floor에 따라 최대값+1 이나 최소값+1이 됨
 */
 function getRandomBetween(n1,n2) {
-    return console.log(Math.floor((Math.random() * ((n2+1) - n1)) + n1));
+    return Math.floor((Math.random() * ((n2+1) - n1)) + n1);
 }

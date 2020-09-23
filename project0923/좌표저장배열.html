@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin:0px;
+        }
+        div {
+            display: inline-block;
+        }
+        #wrapper {
+            width:1200px;
+            height:800px;
+            background:orange;
+            overflow: hidden;
+        }
+        #le {
+            width:1000px;
+            height:800px;
+            background:orange;
+            position: relative;
+            float: left;
+        }
+        #ri {
+            width:200px;
+            height:800px;
+            background: palegreen;
+            position: relative;
+            float: left;
+        }
+    </style>
+
+    <script>
+        var cli_xy = new Array();
+        var data = new Array();
+        var dummy = new Array();
+        var le;
+        var ri;
+        var bt;
+        var img;
+        var x=0;
+        var targetX = 10;
+        var targetY = 10; 
+        function init() {
+            le = document.getElementById("le");
+            ri = document.getElementById("ri");
+            img = document.createElement("img");
+            img.src = "../hero/image1.png";
+            img.style.width = 200 + "px";
+            img.style.height = 200 + "px";
+            img.style.left = 10 + "px";
+            img.style.top = 10 + "px";
+            img.style.position = "absolute";
+            le.appendChild(img);
+            le.addEventListener("click", function() {
+                cli_xy = [event.clientX, event.clientY];
+                dummy.push(cli_xy+"\n");
+                data.push(cli_xy[0]);
+                data.push(cli_xy[1]);
+                setText();
+            });
+        }
+        window.addEventListener("load", function() {
+            init();
+        })
+        function setText() {
+            ri.innerText = dummy;
+        }
+        function move() {
+            setInterval("auto()", 10);
+        }
+        function auto() {
+            targetX = data[x];
+            targetY = data[x+1];
+            // img.style.left = parseFloat(img.style.left) + 0.1 * (targetX - parseFloat(img.style.left)) + "px";
+            // img.style.top = parseFloat(img.style.top) + 0.1 * (targetY - parseFloat(img.style.top)) + "px";
+            console.log(img.style.left + ",  " + img.style.top);
+            if(parseFloat(img.style.left) <= targetX-1 &&  parseFloat(img.style.top) <= targetY-1) {
+                img.style.left = parseFloat(img.style.left) + 0.1 * (targetX - parseFloat(img.style.left)) + "px";
+                img.style.top = parseFloat(img.style.top) + 0.1 * (targetY - parseFloat(img.style.top)) + "px";
+                console.log(img.style.left + "  " + img.style.top + "tx = " + targetX  + ", ty = " + targetY);
+            }
+            else {
+                if(x < data.length-1) {
+                    x+=2;
+                }
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="le"></div>
+        <iv id="ri"></div>
+        </div>
+        <button onClick="move()">실행</button>
+</body>
+
+</html>
