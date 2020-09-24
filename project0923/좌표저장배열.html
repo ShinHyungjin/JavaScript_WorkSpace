@@ -45,6 +45,8 @@
         var x=0;
         var targetX = 10;
         var targetY = 10; 
+        var oldtargetX = 10;
+        var oldtargetY = 10; 
         function init() {
             le = document.getElementById("le");
             ri = document.getElementById("ri");
@@ -86,6 +88,8 @@
             }
             else {
                 if(x < data.length-1) {
+                    oldtargetX = targetX;
+                    oldtargetY = targetY;
                     x+=2;
                 }
             }

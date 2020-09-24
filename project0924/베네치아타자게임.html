@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            display: inline-block;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        #wrapper {
+            width: 1200px;
+            height: 800px;
+            background: yellowgreen;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #ui {
+            width: 200px;
+            height: 80px;
+            overflow: hidden;
+            float: right;
+            background: blue;
+            position: absolute;
+            left: 500px;
+            top: 700px;
+        }
+
+        #answer {
+            position: absolute;
+            height: 40px;
+            left: 20px;
+            top: 34px;
+        }
+
+        #score {
+            position: absolute;
+            left: 550px;
+            font-size: 30px;
+            font-style: bold;
+        }
+
+        #hp {
+            width: 1200px;
+            height: 20px;
+            background: red;
+            position: absolute;
+            top: 780px;
+        }
+    </style>
+    <script src="word.js"></script>
+    <script src="../js/lib.js"></script>
+    <script>
+        var random;
+        var wrapper;
+        var score;
+        var targetY;
+        var hp;
+        var answer;
+        var a = 0;
+        var word;
+        var span;
+        var sapnArray = [];
+        var data = 0;
+        function init() {
+            wrapper = document.getElementById("wrapper");
+            score = document.getElementById("score");
+            answer = document.getElementById("answer");
+            hp = document.getElementById("hp");
+            hp.style.width = 1200 + "px";
+
+            answer.focus();
+
+            answer.addEventListener("keyup", function () {
+                if (event.keyCode == 13) {
+                    if (answer.value == word[0][0]) {
+                        a += 10;
+                        score.innerText = "점수 : " + a;
+                        if ((parseInt(hp.style.width)) <= 1150) {
+                            hp.style.width = (parseInt(hp.style.width) + 50) + "px";
+                        }
+                    }
+                    else {
+                        fail();
+                    }
+                    answer.value = "";
+                    answer.focus();
+                }
+            });
+        }
+        function start() {
+            if (word[0].length > data) {
+                span = document.createElement("span");
+                span.innerHTML = word[0][data];
+                span.style.position = "absolute";
+                span.style.left = getRandomBetween(0, 1000) + "px";
+                span.style.top = 100 + "px";
+
+                wrapper.appendChild(span);
+                sapnArray.push(span);
+                data += 1;
+
+                move();
+            }
+        }
+        function move() {
+            for (var i = 0; i < sapnArray.length; i++) {
+                sapnArray[i].style.top = parseFloat(sapnArray[i].style.top) + 30 + "px";
+                if (parseFloat(sapnArray[i].style.top) >= 790) {
+                    sapnArray[i].style.opacity = 0;
+                    sapnArray.splice(sapnArray.indexOf(i), 1);
+                    fail();
+                }
+            }
+        }
+        function fail() {
+            a -= 5;
+            hp.style.width = (parseInt(hp.style.width) - 150) + "px";
+            score.innerText = "점수 : " + a;
+        }
+        window.addEventListener("load", function () {
+            init();
+            setInterval("start()", 500);
+            setInterval("move()", 500);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <label id="score">점수 : 0 </label>
+        <div id="ui">
+            <input type="text" id="answer" />
+        </div>
+        <div id="hp"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 1000px;
+            height: 600px;
+            margin: auto;
+            background-image: url(https://studioplumeau.com/wp-content/uploads/2017/08/SurfIdent_BG-1024x379.jpg);
+            background-size: 100% 600px;
+            position:relative;
+        }
+    </style>
+    <script src="./map.js"></script>
+    <script>
+        /*게임제작시 복잡한 맵을 구현하는 노하우 배워보자!*/
+        var wrapper;
+        // 30 * 50
+
+        //블락을 생성한다
+        function createBlock() {
+            //한개를 먼저 생성해보자!
+            for (var i = 0; i <map.length; i++) {
+                for (var j = 0; j <map[i].length; j++) {
+                    var block = document.createElement("img");
+                    block.src = "../images/tnt_image.png";
+                    block.style.width = 20 + "px";
+                    block.style.height = 20 + "px";
+                    block.style.position = "absolute";
+                    block.style.left = 20*j + "px";
+                    block.style.top = 20*i + "px";
+                    block.style.position = "absolute";
+                    
+                    if(map[i][j] == 1)
+                        wrapper.appendChild(block);//wrapper에 부착
+                }
+            }
+
+
+
+        }
+
+        function init() {
+            wrapper = document.getElementById("wrapper");
+        }
+        window.addEventListener("load", function () {
+            init();
+            createBlock();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+</body>
+
+</html>
