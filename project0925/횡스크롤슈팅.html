@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 640px;
+            background-image: url(../shooting/bg.jpg);
+        }
+    </style>
+
+    <script src="./User.js"></script>
+    <script src="./Enemy.js"></script>
+    <script src="./Bullet.js"></script>
+    <script src="../js/lib.js"></script>
+    <script>
+        var wrapper;
+        var bgX = 0;
+        var user;
+        var enemy;
+        var bullet;
+        var bulletarr=0;
+        function createUser() {
+            user = new User(wrapper, 100, 100, 100, 200);
+        }
+        function createEnemy() {
+            for (var i = getRandomBetween(0, 4); i < 5; i++) {
+                enemy = new Enemy(wrapper, 100, 100, screen.width - 100, getRandomBetween(0, 540), getRandomBetween(1, 5));
+            }
+        }
+        function createBulle() {
+            bullet[bulletarr++] = new Bullet(wrapper, 10, 10, parseInt(user.img.style.left) + 70, parseInt(user.img.style.top) + 50, 10);
+                console.log(parseInt(bullet.img.style.left));
+        }
+        function moveBg() {
+            wrapper.style.backgroundPosition = (bgX -= 30) + "px 0px";
+        }
+        function moveEnemy() {
+            enemy.move();
+        }
+        function gameLoop() {
+            moveBg();
+            moveEnemy();
+            if(bullet.length > 0 ) {
+            bullet[bulletarr].move();
+        }
+
+            document.addEventListener('keydown', function (e) {
+                if (e.keyCode = 32) {
+                    createBulle();
+                }
+                // if(e.keyCode == ) {
+                //     user.move(e.keyCode);
+                // }
+            });
+        }
+        function init() {
+            wrapper = document.getElementById("wrapper");
+            createUser();
+            createEnemy();
+            setInterval("gameLoop()", 30);
+        }
+        window.addEventListener("load", function () {
+            init();
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrapper"></div>
+</body>
+
+</html>
