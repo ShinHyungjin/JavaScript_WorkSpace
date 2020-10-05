@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        #wrapper {
+            width: 100%;
+            height: 700px;
+            background-image: url(../shooting/bg.png);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+    <script src="./Hero.js"></script>
+    <script src="./Bullet.js"></script>
+    <script src="./Enemy.js"></script>
+    <script src="../js/lib.js"></script>
+    <script>
+        var wrapper;
+        var bgY = 0; //배경의 y축을 결정할 변수
+        var hero;
+        var bullet;
+        var enemy;
+        var flag=true;
+        var enemyarr = new Array();
+        var bulletarr = new Array();
+
+        function createHero() {
+            hero = new Hero((screen.width / 2) - 40, 620, 80, 80, 0, 0);
+        }
+        function createBullet() {
+            bullet = new Bullet("../shooting/ball.png", hero.x + 30, hero.y - 30, 20, 20, 0, 10);
+            bulletarr.push(bullet);
+            var audio = document.createElement("audio");
+            audio.src = "../shooting/fire.wav";
+            audio.play();
+        }
+        function createBomb() {
+            bullet = new Bullet("../shooting/bullet.png", hero.x + 20, hero.y - 10, 40, 40, 0, 1);
+            bulletarr.push(bullet);
+            var audio = document.createElement("audio");
+            audio.src = "../shooting/bomb.wav";
+            audio.play();
+        }
+        function createEnemy() {
+            var ran = getRandomBetween(1, 5);
+            for (var i = 0; i < ran; i++) {
+                enemy = new Enemy("../shooting/e" + getRandomBetween(1, 4) + ".png", getRandomBetween(0, 1620), 20, 100, 100, 0, 0.15);
+                enemyarr.push(enemy);
+                enemy = new Enemy("../shooting/e" + getRandomBetween(1, 4) + ".png", getRandomBetween(0, 1620), 120, 100, 100, 0, 0.15);
+                enemyarr.push(enemy);
+            }
+        }
+        /*배경 처리*/
+        function bgEffect() {
+            //y축의 음수방향으로 배경을 움직이자 
+            bgY++;
+            wrapper.style.backgroundPosition = "0px " + bgY + "px";
+        }
+
+        //사운드 효과 
+        function bgSound() {
+            //audio 태그 생성 
+            var bgAudio = document.createElement("audio"); // <audio></audio> 와 동일
+            bgAudio.src = "../shooting/bgm.mp3";
+            bgAudio.loop = "yes"; //끝없이 루프로 실행..
+            //사운드 자동실행, 보안정책으로 막혀있음(크롬에서..)
+            bgAudio.play(); //사운드 실행
+        }
+
+        /*게임에서는 무조건 게임루프가 존재해야, 사물을 움직일 수 있다.. */
+        function gameLoop() {
+            bgEffect();
+            hero.tick();
+            hero.render();
+            for (var i = 0; i < bulletarr.length; i++) {
+                bulletarr[i].tick();
+                bulletarr[i].render();
+            }
+            for (var i = 0; i < enemyarr.length; i++) {
+                enemyarr[i].tick();
+                enemyarr[i].render();
+            }
+        }
+
+        window.addEventListener("load", function () {
+            wrapper = document.getElementById("wrapper");
+            document.body.addEventListener("keydown", function (e) {
+                switch (e.keyCode) {
+                    case 37:
+                        hero.velx -= 1;
+                        break;
+                    case 39:
+                        hero.velx += 1;
+                        break;
+                    case 38:
+                        hero.vely -= 1;
+                        break;
+                    case 40:
+                        hero.vely += 1;
+                        break;
+                    case 32:
+                        createBullet();
+                        break;
+                    case 66:
+                        createBomb();
+                        break;
+                    default:
+                        break;
+                }
+            });
+            document.body.addEventListener("keyup", function (e) {
+                switch (e.keyCode) {
+                    case 37:
+                        hero.velx = 0;
+                        break;
+                    case 39:
+                        hero.velx = 0;
+                        break;
+                    case 38:
+                        hero.vely = 0;
+                        break;
+                    case 40:
+                        hero.vely = 0;
+                        break;
+                    default:
+                        break;
+                }
+            });
+            //bgSound();
+            createHero();
+            createEnemy();
+            setInterval("gameLoop()", 1);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+</body>
+
+</html>

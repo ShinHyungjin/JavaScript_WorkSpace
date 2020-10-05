@@ -11,7 +11,18 @@ class User {
         container.appendChild(this.img);
     }
 
-    move() {
+    move(code) {
+        // if(code == 30) {
 
+        // }
+        // else if () {
+            
+        // }
+        // else if () {
+
+        // }
+        // else if () {
+
+        // }
     }
 }
