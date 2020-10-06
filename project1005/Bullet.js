@@ -21,8 +21,20 @@ class Bullet {
     }
     tick() {
         this.y -= this.vely;
+        for (var i = 0; i < enemyarr.length; i++) {
+            var result = collisionCheck(this.img, enemyarr[i].img);
+            if (result) {
+                var img = enemyarr[i].img;
+                wrapper.removeChild(img);
+                enemyarr.splice(i, 1);
+
+                wrapper.removeChild(this.img);
+                bulletarr.splice(bulletarr.indexOf(this), 1);
+                break;
+            }
+        }
     }
     render() {
-        this.img.style.top = this.y+"px";
+        this.img.style.top = this.y + "px";
     }
 }

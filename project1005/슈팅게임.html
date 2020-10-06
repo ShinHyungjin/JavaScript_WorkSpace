@@ -39,14 +39,14 @@
             bullet = new Bullet("../shooting/ball.png", hero.x + 30, hero.y - 30, 20, 20, 0, 10);
             bulletarr.push(bullet);
             var audio = document.createElement("audio");
-            audio.src = "../shooting/fire.wav";
+            audio.src = "../sound/fire.wav";
             audio.play();
         }
         function createBomb() {
             bullet = new Bullet("../shooting/bullet.png", hero.x + 20, hero.y - 10, 40, 40, 0, 1);
             bulletarr.push(bullet);
             var audio = document.createElement("audio");
-            audio.src = "../shooting/bomb.wav";
+            audio.src = "../sound/bomb.wav";
             audio.play();
         }
         function createEnemy() {
@@ -69,7 +69,7 @@
         function bgSound() {
             //audio 태그 생성 
             var bgAudio = document.createElement("audio"); // <audio></audio> 와 동일
-            bgAudio.src = "../shooting/bgm.mp3";
+            bgAudio.src = "../sound/bgm.mp3";
             bgAudio.loop = "yes"; //끝없이 루프로 실행..
             //사운드 자동실행, 보안정책으로 막혀있음(크롬에서..)
             bgAudio.play(); //사운드 실행

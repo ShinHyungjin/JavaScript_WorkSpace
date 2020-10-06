@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myMap {
+            width: 1000px;
+            height: 800px;
+            background: yellow;
+            margin: auto;
+        }
+    </style>
+    <script>
+        var myMap;//div
+        var pos = new Array();
+        var marker = new Array();
+        var pop = new Array();
+        var LatLng = [
+            [37.502864, 127.038242],
+            [37.502372, 127.037033],
+            [37.500640, 127.038157],
+            [37.500731, 127.035736],
+            [37.500453, 127.036716]
+        ];
+
+        function init() {
+            myMap = document.getElementById("myMap");
+            for (var i = 0; i < 5; i++) {
+                pos[i] = new google.maps.LatLng(LatLng[i][0], LatLng[i][1]);
+                //마커 클릭시 정보창 띄우기
+                pop[i] = new google.maps.InfoWindow({
+                    content: "여기가 역삼 맛집이에요"
+                });
+            }
+            var mapProp = {
+                center: pos[4],
+                zoom: 17
+            };
+
+            //구글맵 객체 생성 
+            var map = new google.maps.Map(myMap, mapProp); //그려질div, 옵션
+            //마커생성
+            for (var i = 0; i < 5; i++) {
+                marker[i] = new google.maps.Marker({
+                    position: pos[i],
+                    animation: google.maps.Animation.BOUNCE,
+                    icon: {
+                        url: (i + 1) + ".webp",
+                        scaledSize: new google.maps.Size(45, 45)
+                    }
+                });
+                marker[i].setMap(map);
+                //마커클릭 이벤트
+                google.maps.event.addListener(marker[i], "click", function () {
+                    map.setZoom(20);
+                    pop[i].open(map, marker[i]);
+                });
+            }
+
+        }    
+    </script>
+</head>
+
+<body>
+    <div id="myMap">구글 지도 나올 예정</div>
+</body>
+<!-- https://console.developers.google.com/ 
+        https://maps.googleapis.com/maps/api/js?key= My Key
+-->
+
+</html>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvglOCJZXdrv9k96uXeEDOVGyLg_gJc&callback=init"></script>
