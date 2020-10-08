@@ -84,3 +84,11 @@ function collisionCheck(box1, box2) {
 
    return result;
 }
+
+function getLastDate(yy,mm) {
+    var d = new Date();
+    d.setFullYear(yy);
+    d.setMonth(mm+1);
+    d.setDate(0);
+    return d.getDate();
+}
