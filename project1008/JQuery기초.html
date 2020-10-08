@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script>
+        // $(document).ready(function() { 
+        // $(function() { });
+            
+        //windows.addEventListner 와 같음
+        //     var box = document.getElementById("box");
+        //     box.style.background = "red";
+        //     box.style.width = 200 + "px";
+        //     box.style.height = 200 + "px";
+        // });
+
+        // $("#box").css("background","blue");
+        // $("#box").css("width","100px");
+        // $("#box").css("height","100px");
+
+        $(document).ready(function() {
+        $("#box").css({
+            "background":"blue",
+            "width":"100px",
+            "height":"100px",
+            "border":"2px solid black"
+        });
+    });
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
