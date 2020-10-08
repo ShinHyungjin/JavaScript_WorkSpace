@@ -1,1 +1,1 @@
-# This was modelled as EPCISDocuments using open data provided by FoodSafetyKorea. Open data is 'Barcode-Linked Product Information', and the information provided by this data is described below.
+# I would like to remind you that all codes, files and public data provided to this repository are used for testing purposes and are not used for revenue purposes. Do not violate any revenue generation or copyright laws when using codes, files, or public data.
